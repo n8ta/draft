@@ -6,6 +6,7 @@ gem "react_on_rails", "12.0.0" # Update to the current version
 gem "webpacker", "~> 5"
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'
 gem 'mysql2', '>= 0.4.4'
+gem 'foreman'
 gem 'puma', '~> 4.1'
 gem 'sass-rails', '>= 6'
 gem 'turbolinks', '~> 5'
