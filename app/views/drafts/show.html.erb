@@ -1,0 +1,4 @@
+<%= react_component("ShowDraft", props: {id: @id.to_i,
+                                         current_user: {username: session[:username],
+                                                        uuid: session[:uuid],
+                                                        secret: session[:secret]}}) %>
