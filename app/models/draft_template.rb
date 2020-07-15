@@ -5,9 +5,11 @@ class DraftTemplate < ApplicationRecord
 
   def self.actions
     {
+        :pick_captain => "PICK_CAPTAIN",
         :pick_player => "PICK_PLAYER",
         :pick_hero => "PICK_HERO",
         :ban_hero => "BAN_HERO",
+        :done => "DONE",
     }
   end
 
@@ -19,11 +21,16 @@ class DraftTemplate < ApplicationRecord
     return "B"
   end
 
+  def self.pick_cap
+    return Proc.new do |team|
+      {team: team, action: self.actions[:pick_captain]}
+    end
+  end
+
   def self.pick
     return Proc.new do |team|
       {team: team, action: self.actions[:pick_player]}
     end
-
   end
 
   def self.hero

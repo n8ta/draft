@@ -1,6 +1,11 @@
 import React from 'react';
+import PropTypes from "prop-types";
 
 export default class Login extends React.Component {
+
+    static propTypes = {
+        redirect_url: PropTypes.string,
+    };
 
     constructor(props) {
         super(props);
@@ -23,7 +28,11 @@ export default class Login extends React.Component {
             credentials: 'same-origin',
         }).then(res => res.json()).then((result) => {
             if (result['status'] === 'success') {
-                Turbolinks.visit(result['url']);
+                if (this.props.redirect_url) {
+                    Turbolinks.visit(this.props.redirect_url)
+                } else {
+                    Turbolinks.visit(result['url'])
+                }
             } else if (result['status'] === 'failed') {
                 this.setState({submit_error_text: result['msg']})
             }

@@ -1,9 +1,9 @@
 import React from "react";
 
 const TeamMember = (props) => {
-    console.info(props)
+
     return (
-        <li key={props.uuid}>
+        <li className={props.index ===  0 ? 'font-weight-bold' : '' }>
             {props.username}
         </li>
     )

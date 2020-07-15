@@ -8,13 +8,12 @@ export default class Draft extends React.Component {
     static propTypes = {
         username: PropTypes.string.isRequired,
         uuid: PropTypes.string.isRequired,
-        drafts: PropTypes.array.isRequired,
     };
 
 
     constructor(props) {
         super(props);
-        this.state = {drafts: this.props.drafts};
+        this.state = {drafts: []};
     }
 
     componentDidMount() {
