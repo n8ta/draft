@@ -11,7 +11,10 @@ const Step = props => {
             return (
                 <div className={'text-center'}>
                     <h3>All Done!</h3>
-                    <p>Send any feedback or bug reports to Iroh on Discord.</p>
+                    <p>Please report any bugs/features requests here:&nbsp;
+                        <a href={'https://github.com/n8ta/draft'}
+                           target={"_blank"}>github.com/n8ta/draft</a>
+                    </p>
                 </div>)
         }
         return (
