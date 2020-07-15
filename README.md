@@ -8,10 +8,11 @@ License: [http://www.wtfpl.net/](http://www.wtfpl.net/)
 # Tech
 ## Rails
 Stores a simple json column in the database with the current state of each draft.
-Also stores a unique identified in the session of each client.
+Also stores a unique identifier in the session of each client.
 
 Publishes this state to an action cable channel.
 ## React
-Subscripts to the action cable channel and handles the UI based on the state sent from react.
+Subscribes to the action cable channel listens for changes, then handles the UI based on the state sent from react.
 
 Captain users are able to dispatch events to the reducer in the rails app via a PATCH request. Actions are things like, pick hero, ban hero, pick player etc.
+This triggers a new state to be sent to all subscriber.
