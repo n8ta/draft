@@ -12,7 +12,9 @@ development:
 test:
   <<: *default
 production:
-  <<: *default
-  username: mlii
+  adapter: mysql2
+  database: draft
+  encoding: utf8
+  username: draft
   password: <%= ENV['prod_mysql_pass'] %>
-  socket: /var/lib/mysql/mysql.sock
+  socket:  <%= ENV['sql_socket'] %>
