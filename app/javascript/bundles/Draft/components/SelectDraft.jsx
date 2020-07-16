@@ -1,11 +1,17 @@
 import React from "react";
+import None from "./None";
 
 const SelectDraft = (props) => {
-    return (
-        <div>
-            <a href={'/drafts/' + props.id}>{props.name}</a>
-        </div>
-    )
+    if (props.drafts.length > 0) {
+        return (
+            <ul>
+                {props.drafts.map((draft, index) =>
+                    <li key={index}><a href={'/drafts/' + draft.id}>{draft.name}</a></li>)}
+            </ul>
+        )
+    } else {
+        return (<None/>)
+    }
 }
 
 export default SelectDraft

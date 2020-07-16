@@ -97,6 +97,12 @@ export default class ShowDraft extends React.Component {
                     <div className={'ml-3 mr-3 card p-4'}>
                         <Step step={this.current_step()}/>
                     </div>
+                    <UnpickedPlayers
+                        dispatch={this.dispatch}
+                        myTurn={myTurn}
+                        teamAction={this.current_step()}
+                        players={draft_state.players}
+                    />
                     <div className={'d-flex justify-content-center row'}>
 
                         <div className={'mt-2 col-md-3 shadow-lg'}>
@@ -129,12 +135,6 @@ export default class ShowDraft extends React.Component {
                             </div>
                         </div>
                     </div>
-                    <UnpickedPlayers
-                        dispatch={this.dispatch}
-                        myTurn={myTurn}
-                        teamAction={this.current_step()}
-                        players={draft_state.players}
-                    />
                 </div>
             )
         } else {

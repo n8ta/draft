@@ -21,10 +21,12 @@ class DraftsController < ApplicationController
         username: session[:username],
     }
 
-    i = 0;
-    while i < 20 do
-      state['players'] << {uuid: SecureRandom.hex(n=64), username: "user-"+i.to_s}
-      i += 1
+    if ENV['add_dummy_users'] == 'true'
+      i = 0;
+      while i < 20 do
+        state['players'] << {uuid: SecureRandom.hex(n = 64), username: "user-" + i.to_s}
+        i += 1
+      end
     end
 
     ad.state = state.as_json
@@ -54,7 +56,6 @@ class DraftsController < ApplicationController
       return render json: {status: 'failed', message: 'Invalid secret'}, status: 500
     end
   end
-
 
 
 end

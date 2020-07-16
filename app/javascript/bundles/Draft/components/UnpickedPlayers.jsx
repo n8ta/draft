@@ -18,10 +18,10 @@ const UnpickedPlayers = (props) => {
             <ul className={'unpicked_players_list '}>
                 {(props.players && props.players.length > 0) ?
                     props.players.map((player, index) =>
-                        <li key={player.uuid} className={'m-2'}>
+                        <li key={player.uuid} className={'m-1'}>
                             <button disabled={!enabled}
                                     onClick={() => props.dispatch({index})}
-                                    className={'btn btn-primary'}>
+                                    className={'btn btn-sm btn-primary'}>
                                 <span className={'font-weight-bold'}>+</span> {player.username}
                             </button>
                         </li>

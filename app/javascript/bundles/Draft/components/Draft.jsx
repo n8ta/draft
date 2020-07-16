@@ -3,6 +3,7 @@ import createChannel from "../../../channels/consumer"
 import PropTypes from 'prop-types';
 import CreateDraft from './CreateDraft'
 import SelectDraft from './SelectDraft'
+import None from "./None";
 
 export default class Draft extends React.Component {
     static propTypes = {
@@ -13,7 +14,7 @@ export default class Draft extends React.Component {
 
     constructor(props) {
         super(props);
-        this.state = {drafts: []};
+        this.state = {drafts: this.props.drafts};
     }
 
     componentDidMount() {
@@ -23,7 +24,6 @@ export default class Draft extends React.Component {
         }
         const chat = createChannel("DraftChannel", {
             received(data) {
-                console.info(data);
                 append(data.drafts)
             }
         });
@@ -42,24 +42,24 @@ export default class Draft extends React.Component {
             body: JSON.stringify({name: name}),
             credentials: 'same-origin',
         }).then(res => res.json()).then((result) => {
-            console.info(result)
+            Turbolinks.visit(result['url'])
         }).catch((res) => {
             console.error("FAILED", res);
         })
     }
 
     render() {
+        console.info(this.state);
         return (
             <div className={'d-flex justify-content-center row'}>
                 <div className={'col-md-6'}>
-                    <p className={'text-right'} title={this.props.uuid}>You: {this.props.username}</p>
                     <div className={'row'}>
                         <div className={'col-md-6'}>
                             <CreateDraft submit={this.createDraft}/>
                         </div>
                         <div className={'col-md-6'}>
                             <h1>Current Drafts</h1>
-                            {this.state.drafts.map((info) => <SelectDraft key={info.id} {...info} />)}
+                            <SelectDraft drafts={this.state.drafts}/>
                         </div>
                     </div>
                 </div>
