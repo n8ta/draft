@@ -1,7 +1,7 @@
 class DraftsController < ApplicationController
 
   def show
-    unless session[:uuid]
+    unless session[:uuid] && (not session[:uuid].nil?)
       @redirect_url = request.url
       render 'sessions/index'
     end
